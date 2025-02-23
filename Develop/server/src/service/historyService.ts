@@ -13,7 +13,7 @@ class City {
 // TODO: Complete the HistoryService class
 class HistoryService {
   // TODO: Define a read method that reads from the searchHistory.json file
-  private path: string = './db/db.json'
+  private path: string = './db/searchHistory.json'
   private async read(): Promise<City[]> {
     try {
       const data = await fs.readJson(this.path)
