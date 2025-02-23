@@ -77,7 +77,7 @@ class WeatherService {
       return this.destructureLocationData(locationData[0])
     } else {
       console.error(`No location data available.`)
-      //return null
+      return null
     }
   }
   // TODO: Create fetchWeatherData method
