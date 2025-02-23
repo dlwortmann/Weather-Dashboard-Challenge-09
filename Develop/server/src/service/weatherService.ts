@@ -13,7 +13,7 @@ class Weather {
   date: string;
   icon: string;
   iconDescription: string;
-  temp: number;
+  tempF: number;
   windSpeed: number;
   humidity: number;
 
@@ -22,7 +22,7 @@ class Weather {
     date: string,
     icon: string,
     iconDescription: string,
-    temp: number,
+    tempF: number,
     windSpeed: number,
     humidity: number,
   ) {
@@ -30,7 +30,7 @@ class Weather {
     this.date = date;
     this.icon = icon;
     this.iconDescription = iconDescription;
-    this.temp = temp;
+    this.tempF = tempF;
     this.windSpeed = windSpeed;
     this.humidity = humidity;
   }
@@ -39,7 +39,7 @@ class Weather {
 // TODO: Complete the WeatherService class
 class WeatherService {
   // TODO: Define the baseURL, API key, and city name properties
-  private baseURL = 'https://api.openweathermap.org/data/2.5/forecast?lat={latitude}&lon={longitude}&appid={API key}'
+  private baseURL = 'https://api.openweathermap.org/data/2.5/forecast?lat={latitude}&lon={longitude}&appid={APIkey}'
   private APIKey = '43b34f5c183fb0c1cc9887e1123dbd0b'
   private namedCity!: string
 
@@ -92,10 +92,10 @@ class WeatherService {
     const date = new Date(response.list[0].dt * 1000).toLocaleDateString()
     const icon = response.list[0].weather[0].icon
     const iconDescription = response.list[0].weather[0].iconDescription
-    const temp = ((response.list[0].main.temp - 273.15) * 9)/5 + 32
+    const tempF = ((response.list[0].main.tempF - 273.15) * 9)/5 + 32
     const windSpeed = response.list[0].main.windSpeed
     const humidity = response.list[0].main.humidity
-    return new Weather(city, date, icon, iconDescription, temp, windSpeed, humidity)
+    return new Weather(city, date, icon, iconDescription, tempF, windSpeed, humidity)
   }
 
   // TODO: Complete buildForecastArray method
@@ -108,10 +108,10 @@ class WeatherService {
       const date = new Date(weatherData[i].dt * 1000).toLocaleDateString()
       const icon = weatherData[i].weather[0].icon
       const iconDescription = weatherData[i].weather[0].iconDescription
-      const temp = ((weatherData[i].main.temp - 273.15) * 9)/5 + 32
+      const tempF = ((weatherData[i].main.tempF - 273.15) * 9)/5 + 32
       const windSpeed = weatherData[i].main.windSpeed
       const humidity = weatherData[i].main.humidity
-      forecastArr.push(new Weather(city, date, icon, iconDescription, temp, windSpeed, humidity))
+      forecastArr.push(new Weather(city, date, icon, iconDescription, tempF, windSpeed, humidity))
     } return forecastArr
   }
 
