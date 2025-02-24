@@ -39,7 +39,7 @@ class Weather {
 // TODO: Complete the WeatherService class
 class WeatherService {
   // TODO: Define the baseURL, API key, and city name properties
-  private baseURL = 'https://api.openweathermap.org/data/2.5/forecast?lat={latitude}&lon={longitude}&appid={APIkey}'
+  private baseURL = 'https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={APIkey}'
   private APIKey = '43b34f5c183fb0c1cc9887e1123dbd0b'
   private namedCity!: string
 

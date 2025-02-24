@@ -26,7 +26,7 @@ class HistoryService {
   // TODO: Define a write method that writes the updated cities array to the searchHistory.json file
   private async write(cities: City[]): Promise<void> {
     try {
-      await fs.writeJson(this.path, cities, { spaces: 2 })
+      await fs.writeJson(this.path, cities)// { spaces: 2 }
         console.log('Data file written successfully.')
     } catch (err) {
       console.log(err)
@@ -54,7 +54,7 @@ class HistoryService {
       const removedCities = cities.filter(city => city.id !== id)
       await this.write(removedCities)
     } catch (err) {
-      console.log
+      console.log(err)
     }
   }
 }
