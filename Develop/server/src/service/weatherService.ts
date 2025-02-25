@@ -39,10 +39,13 @@ class Weather {
 // TODO: Complete the WeatherService class
 class WeatherService {
   // TODO: Define the baseURL, API key, and city name properties
-  private baseURL = process.env.API_BASE_URL || ""
-  private APIKey = process.env.API_KEY || ""
-  private namedCity!: string
-
+  private baseURL?: string
+  private APIKey?: string
+  constructor() {
+    this.baseURL = process.env.API_BASE_URL || ""
+    this.APIKey = process.env.API_KEY || ""
+  } 
+  private cityName!: string
   // TODO: Create fetchLocationData method
   private async fetchLocationData(query: string) {
     try {
@@ -64,7 +67,7 @@ class WeatherService {
   }
   // TODO: Create buildGeocodeQuery method
   private buildGeocodeQuery(): string {
-    return `${this.baseURL}/geo/1.0/direct?q=${this.namedCity}&limit=1&appid=${this.APIKey}`
+    return `${this.baseURL}/geo/1.0/direct?q=${this.cityName}&limit=1&appid=${this.APIKey}`
   }
   // TODO: Create buildWeatherQuery method
   private buildWeatherQuery(coordinates: Coordinates): string {
@@ -88,7 +91,7 @@ class WeatherService {
   }
   // TODO: Build parseCurrentWeather method
   private parseCurrentWeather(response: any) {
-    const city = this.namedCity
+    const city = this.cityName
     const date = new Date(response.list[0].dt * 1000).toLocaleDateString()
     const icon = response.list[0].weather[0].icon
     const iconDescription = response.list[0].weather[0].iconDescription
@@ -104,7 +107,7 @@ class WeatherService {
     forecastArr.push(currentWeather);
 
     for(let i = 1; i < weatherData.length; i++) {
-      const city = this.namedCity
+      const city = this.cityName
       const date = new Date(weatherData[i].dt * 1000).toLocaleDateString()
       const icon = weatherData[i].weather[0].icon
       const iconDescription = weatherData[i].weather[0].iconDescription
@@ -117,7 +120,7 @@ class WeatherService {
 
   // TODO: Complete getWeatherForCity method
   async getWeatherForCity(city: string) {
-    this.namedCity = city
+    this.cityName = city
     const coordinates = await this.fetchAndDestructureLocationData()
     if(!coordinates) {
       throw new Error (`Coordinates not available`)
