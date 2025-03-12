@@ -18,6 +18,7 @@ This application allows a user to search a city and returns weather information 
 ## Link to Deployed Site
 
 [Weather Dashboard](https://weather-dashboard-challenge-09-1.onrender.com/)
+![alt text](image.png)
 
 ## Installation
 1. Clone the repo onto your machine using the command "git clone" using the SSH key from the repository.
