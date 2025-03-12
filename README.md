@@ -27,7 +27,7 @@ This application allows a user to search a city and returns weather information 
 5. Start program by running "npm start".
 
 ## Usage Information
-This application is currently not functioning properly. Weather is not returned as expected. Work is still being done to fix the routes that should return the requested data and display on the deployed web page.
+Type a city into the search bar and current weather forecast and 5 day forecast should be returned.
 
 ## Contribution Guidelines
 I am open to collaborations. Suggestions on how to fix the routes are welcome as I would like the application to function properly. Any changes should made on a feature branch and pull requests will need to be reviewed before being added to the main branch.
